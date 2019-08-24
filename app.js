@@ -60,7 +60,7 @@ app.post('/upload', function(req, res){
         // Creating the original file from the chunks
         resumable.write(identifier, writeStream, {
           onDone: function(){
-            uploadLocalFile(CONTAINER_NAME, './abc/' + filename).then(resp => {
+            uploadLocalFile(CONTAINER_NAME, './uploads/' + filename).then(resp => {
               res.status(200).json({success: true, message: resp, error: ''});
             })
             .catch(err => {

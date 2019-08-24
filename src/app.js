@@ -2,8 +2,13 @@
 const express = require('express');
 const app = express();
 const multipart = require('connect-multiparty');
+const dotenv = require('dotenv');
 
 const routes = require('./routes/v1');
+const PORT = process.env.PORT || 3000;
+
+// Configuring env variables
+dotenv.config();
 
 // Using multipart
 app.use(multipart());
@@ -28,6 +33,6 @@ app.all('*', (req, res) => {
   res.status(404).json({statusCode: 404, message: 'Invalid Route', data: '', error: ''})
 });
 
-app.listen(3000, () => {
-  console.log(`The server is running on PORT ${3000}`);
+app.listen(PORT, () => {
+  console.log(`The server is running on PORT ${PORT}`);
 });

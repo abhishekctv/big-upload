@@ -33,6 +33,7 @@ app.all('*', (req, res) => {
   res.status(404).json({statusCode: 404, message: 'Invalid Route', data: '', error: ''})
 });
 
+// Spinning the server
 app.listen(PORT, () => {
   console.log(`The server is running on PORT ${PORT}`);
 });

@@ -29,12 +29,14 @@ router.get('/fileid', function(req, res){
           // Creating the original file from the chunks
           resumable.write(identifier, writeStream, {
             onDone: function(){
+              res.status(200).json({success: true, message: 'File uploaded', error: ''});
+
+              console.log('Starting to upload the file into azure');
               services.uploadLocalFile(CONTAINER_NAME, './uploads/' + filename).then(resp => {
-                res.status(200).json({success: true, message: resp, error: ''});
+                console.log('File upload to azure success', resp);
               })
               .catch(err => {
-                  console.log('Azure blob upload error ', err);
-                  res.status(400).json({success: false, message: '',error: err});
+                console.log('File upload to azure error ', err);
               });
             }
           });

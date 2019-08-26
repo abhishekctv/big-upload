@@ -20,10 +20,10 @@ app.use(function (req, res, next) {
 });
 
 // Log Incoming requests
-app.all('*', (req, res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.url}`);
-  return next();
-});
+// app.all('*', (req, res, next) => {
+//   console.log(`Incoming request: ${req.method} ${req.url}`);
+//   return next();
+// });
 
 // Passing the routes
 app.use(routes);
